@@ -14,8 +14,8 @@ const _port = process.env.PORT || 5000;
 //Server Data
 const _app_folder = __dirname + '/' ;
 // ---- SERVE STATIC FILES ---- //
-app.use(express.static(__dirname + '/' ));
-app.post('*.*', express.static(_app_folder, {maxAge: '1y'}));
+//app.use(express.static(__dirname + '/' ));
+//app.post('*.*', express.static(_app_folder, {maxAge: '1y'}));
 // ---- SERVE API --- //
 //This shows Database table in json format in browser
 app.get("/api/data",function(req,res)
@@ -40,7 +40,7 @@ app.post('/post', function(request, response){
 });
 //Pushes files from server to client. like "index html"
 app.all('*', function (req, res) {
-    res.status(200).sendFile(`/`, {root: _app_folder});
+    res.status(200).sendFile(`/index.html`, {root: _app_folder});
 });
 // ---- START UP THE NODE SERVER  ----
 app.listen(_port, function () {
